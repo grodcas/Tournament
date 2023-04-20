@@ -1,0 +1,17 @@
+<h1>POOLS<h1/>
+{% if Tournament %}
+<h5>
+    <ul>
+    {% for pool in Tournament %}
+    <fieldset>
+        <li><a href="/tournaments/{{ pool.tournament.id }}/{{pool.id}}">{{ pool.numberStr}}</a></li>  
+    </fieldset>
+
+    {% endfor %}
+
+    
+    </ul>
+{% else %}
+    <p>No tournaments are available.</p>
+{% endif %}
+<h5/>

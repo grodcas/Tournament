@@ -28,4 +28,6 @@ class match(models.Model):
     place=models.CharField(max_length=100)
     teams=models.ManyToManyField(team)
     score=models.CharField(max_length=100)
+    score_Team1=models.IntegerField(default=0)
+    score_Team2=models.IntegerField(default=0)
     pool=models.ForeignKey(pool,on_delete=models.CASCADE)

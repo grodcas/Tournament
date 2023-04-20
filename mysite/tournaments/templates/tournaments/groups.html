@@ -1,0 +1,18 @@
+
+{% if Matches and group_id %}
+<h1>GROUP {{group_id}}<h1/>
+<h5>
+    <ul>
+    {% for match in Matches %}
+    <fieldset>
+        <li><a href="/tournaments/{{ tournament.id }}/{{pool.id}}">{{ match.score}}</a></li>  
+    </fieldset>
+
+    {% endfor %}
+
+    
+    </ul>
+{% else %}
+    <p>No Groups are available.</p>
+{% endif %}
+<h5/>
