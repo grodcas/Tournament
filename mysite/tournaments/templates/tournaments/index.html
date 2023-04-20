@@ -1,5 +1,11 @@
 <h1>TOURNAMENTS<h1/>
 {% if Tournaments %}
+
+<form action="{% url 'tournaments:index' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+</form>
+
 <h5>
     <ul>
     {% for tournament in Tournaments %}

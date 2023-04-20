@@ -1,10 +1,21 @@
 from django.shortcuts import render,get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import tournament, pool
+from .forms import SearchForm
 
 def index(request):
     Tournament=tournament.objects.all
-    context={'Tournaments':Tournament}
+    if request.method == 'POST':
+        search_form = SearchForm(request.POST)
+        if search_form.is_valid():
+            query = search_form.cleaned_data['query']
+            Tournament = tournament.objects.filter(name__contains=query)
+        else:
+            Tournament=tournament.objects.all
+    else:
+        search_form = SearchForm()
+        Tournament=tournament.objects.all
+    context={'Tournaments':Tournament,'form': search_form}
     return render(request, 'tournaments/index.html' ,context)
 
 def details(request,tournament_id):
