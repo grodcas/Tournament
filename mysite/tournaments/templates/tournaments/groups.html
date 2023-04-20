@@ -5,7 +5,7 @@
     <ul>
     {% for match in Matches %}
     <fieldset>
-        <li><a href="/tournaments/{{ tournament.id }}/{{pool.id}}">{{ match.score}}</a></li>  
+        <li><a href="/tournaments/{{ match.pool.tournament.id }}/{{match.pool.id}}/{{match.id}}">{{ match.score}}</a></li>  
     </fieldset>
 
     {% endfor %}

@@ -20,3 +20,9 @@ def groups(request,tournament_id, group_id):
     context={'Matches':Matches, 'group_id':group_id}
     return render(request, 'tournaments/groups.html' ,context)
 
+def matches(request,tournament_id, group_id, match_id):
+    Tournament=get_object_or_404(tournament,pk=tournament_id)
+    Pools=Tournament.pool_set.get(pk=group_id)
+    Match=Pools.match_set.get(pk=match_id)
+    context={'Match':Match, 'group_id':group_id, 'match_id': match_id}
+    return render(request, 'tournaments/matches.html' ,context)
