@@ -1,13 +1,23 @@
 <h1>TOURNAMENTS<h1/>
+    <form method="post" action="/accounts/login/">
+        {% csrf_token %}
+        <input type="submit" value="login">
+        </form>
+    <form method="post" action="/accounts/logout/">
+            {% csrf_token %}
+            <input type="submit" value="logout">
+            </form>
+    <form method="post" action="/tournaments/sign_up">
+            {% csrf_token %}
+            <input type="submit" value="register">
+            </form>
+        
 {% if Tournaments %}
 
-<form action="{% url 'tournaments:index' %}" method="post">
-    {% csrf_token %}
-    {{ form }}
-</form>
 
 <h5>
     <ul>
+
     {% for tournament in Tournaments %}
     <fieldset>
         <li><a href="/tournaments/{{ tournament.id }}/">{{ tournament.name }}</a></li>
