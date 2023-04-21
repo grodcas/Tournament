@@ -1,3 +1,7 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'tournaments/style.css' %}">
+
 <h1>TOURNAMENTS<h1/>
     <form method="post" action="/accounts/login/">
         {% csrf_token %}
