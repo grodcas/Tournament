@@ -1,0 +1,9 @@
+{% if tour%}
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Post">
+    </form>
+{% else %}
+    <p>No such directory is available.</p>
+{% endif %}

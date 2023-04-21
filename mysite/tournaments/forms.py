@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 class SearchForm(forms.Form):
     query = forms.CharField(label='Find tournaments containing:', max_length=100)
 
+class CommentForm(forms.Form):
+    content = forms.CharField(label='Enter comment here:', max_length=100)
+
 class RegistrationForm(UserCreationForm):
     class Meta:
         model=User

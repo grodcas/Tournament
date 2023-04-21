@@ -1,11 +1,28 @@
 
 {% if Match and group_id %}
-<h1>MATCH {{Match.score}}<h1/>
+<h1>MATCH {{Match.name}}<h1/>
 <h5>
+    Comments:
     <ul>
-     
+        {% for comment in Comments %}
+        <fieldset>
+            {{ comment.author}} :
+            <div>
+            </div>
+            {{ comment.content}}  
+            {{ comment.date}}
+        </fieldset>
+    
+        {% endfor %}
+
+
     </ul>
 {% else %}
     <p>No Match  available.</p>
 {% endif %}
+
+<form method="post" action="/tournaments/{{ Match.pool.tournament.id }}/{{Match.pool.id}}/{{Match.id}}/comment">
+    {% csrf_token %}
+    <input type="submit" value="New Comment">
+    </form>
 <h5/>

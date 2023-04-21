@@ -1,4 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+
+
 
 class tournament(models.Model):
     name=models.CharField(max_length=100)
@@ -27,7 +31,17 @@ class match(models.Model):
     date=models.DateTimeField('date published')
     place=models.CharField(max_length=100)
     teams=models.ManyToManyField(team)
-    score=models.CharField(max_length=100)
+    name=models.CharField(max_length=100)
     score_Team1=models.IntegerField(default=0)
     score_Team2=models.IntegerField(default=0)
     pool=models.ForeignKey(pool,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
+
+class comment(models.Model):
+    author=models.CharField(max_length=100)
+    match=models.ForeignKey(match,on_delete=models.CASCADE)
+    date=models.DateTimeField('date published')
+    content=models.CharField(max_length=100)
+    def __str__(self):
+        return self.content
