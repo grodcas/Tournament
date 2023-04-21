@@ -7,3 +7,8 @@
 {% else %}
     <p>No such directory is available.</p>
 {% endif %}
+
+<form method="post" action="/tournaments/{{ tour}}/{{group}}/{{match}}">
+    {% csrf_token %}
+    <input type="submit" value="go back to comments">
+    </form>

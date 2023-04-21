@@ -1,7 +1,30 @@
 
-{% if Matches and group_id %}
+{% if Matches and group_id and Teams%}
 <h1>GROUP {{group_id}}<h1/>
 <h5>
+    
+    <table style="width:100%">
+        <tr>
+          <td>Team name</td>
+          <td>Points</td>
+          <td>Scored</td>
+          <td>Conceded</td>
+        </tr>
+        {% for team in Teams %}
+        <tr>
+       
+          <td>{{team.name}}</td>
+          <td>{{team.poolpoints}}</td>
+          <td>{{team.scored}}</td>
+          <td>{{team.conceded}}</td>
+        
+        </tr>
+        {% endfor %}
+    </table>
+      
+
+
+
     <ul>
     {% for match in Matches %}
     <fieldset>
@@ -15,4 +38,9 @@
 {% else %}
     <p>No Groups are available.</p>
 {% endif %}
+
+<form method="post" action="/tournaments/{{tournament_id}}/">
+    {% csrf_token %}
+    <input type="submit" value="go back to groups">
+    </form>
 <h5/>

@@ -15,7 +15,10 @@ class tournament(models.Model):
 class team(models.Model):
     name=models.CharField(max_length=100)
     trainer=models.CharField(max_length=100)
-    players=models.CharField(max_length=1000) 
+    players=models.CharField(max_length=1000)
+    poolpoints=models.CharField(max_length=1000,default=0)
+    scored=models.CharField(max_length=1000,default=0)
+    conceded=models.CharField(max_length=1000,default=0)
     def __str__(self):
         return self.name
 

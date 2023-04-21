@@ -44,8 +44,9 @@ def details(request,tournament_id):
 def groups(request,tournament_id, group_id):
     Tournament=get_object_or_404(tournament,pk=tournament_id)
     Pools=Tournament.pool_set.get(pk=group_id)
+    Teams=Pools.teams.all
     Matches=Pools.match_set.all
-    context={'Matches':Matches, 'group_id':group_id}
+    context={'Matches':Matches, 'group_id':group_id, 'Teams':Teams, 'tournament_id':tournament_id }
     return render(request, 'tournaments/groups.html' ,context)
 
 def matches(request,tournament_id, group_id, match_id):
